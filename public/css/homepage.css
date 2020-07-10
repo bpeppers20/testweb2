@@ -1,0 +1,102 @@
+body {
+    background-color: #E2F3F1;
+}
+
+/* May need to make a separated size for large desktops*/
+
+h1 {
+    position: absolute;
+    /* left: 700px; */
+    margin-left: 37%;
+    /*top: 5px; */
+    margin-top: -2%;
+    white-space: nowrap; /* Prevent text wrapping*/
+    /* Dynamic Font Size vw= viewport width */ 
+}
+
+h2 {
+    position: absolute;
+    margin-left: 45%;
+    margin-top: -1%;
+}
+
+.brec { 
+    height: 106px; /*106px*/
+    width: 627px; /*627px*/
+    position: absolute;
+    margin-left: 29%;
+    margin-top: -3%;
+    background-color: #50e682;
+    z-index: -1;
+}
+
+.irec {
+    background-color: #50e682;
+    position: absolute;
+    height: 550px;
+    width: 627px;
+    z-index: 1;
+    margin-top: 0%;
+    left: 31%;
+}
+.info {
+    position: absolute;
+    margin-top: 0.5%;
+    margin-left: 20%;
+    z-index: 1;
+    font-size: x-large;
+}
+
+ /* May need to make a CSS class for buttons and options */
+ .ops {
+     background-color: #CDCDCD;
+ }
+
+@media only screen and (max-width: 600px){ /* For mobile */
+    h1 {
+        position: absolute;
+        /* left: 700px; */
+        margin-left: 0%;
+        /*top: 5px; */
+        margin-top: 1%;
+        white-space: nowrap; /* Prevent text wrapping*/
+        /* Dynamic Font Size vw= viewport width */ 
+    }
+    h2 {
+        position: absolute;
+        margin-left: 45%;
+        margin-top: -1%;
+    }
+    
+    .brec { 
+        height: 106px; /*106px*/
+        width: 460px; /*627px*/
+        position: absolute;
+        margin-left: -10%;
+        margin-top: -3%;
+        background-color: #50e682;
+        z-index: -1;
+    }
+    
+    .irec {
+        background-color: #50e682;
+        position: absolute;
+        height: 430px;
+        width: 500px;
+        z-index: 1;
+        margin-top: 10%;
+        left: -15%;
+    }
+    .info {
+        position: absolute;
+        margin-top: 5%;
+        margin-left: 18%;
+        z-index: 1;
+        font-size: x-large;
+    }
+
+     /* May need to make a CSS class for buttons and options */
+     .ops {
+        background-color: #CDCDCD;
+    }
+}
