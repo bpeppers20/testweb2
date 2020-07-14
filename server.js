@@ -1,6 +1,6 @@
 //Modules
-const formatMessage = require('./public/js/messages'); // User made module
-const {userJoin, getCurrentIsland} = require('./public/js/users'); // User Made module
+const {formatMessage, formatInfoMessage} = require('./public/js/messages'); // User made module
+const {userJoin, getCurrentIsland, userLeave, getServerUsers} = require('./public/js/users'); // User Made module
 const express = require('express'); // allows me to use express module for post May combine later
 // Object Variables to use modules
 const app = express(); //Make a variable the uses express objects
@@ -29,20 +29,30 @@ io.on('connection', socket => {
         socket.emit('message', formatMessage(botName, 'Welcome to the Server!')); // Only client
         // Broadcast when a user connects
         socket.broadcast.to(island.server).emit('message', formatMessage(botName,`${island.island_name} has been found!`)); // to notify all but client
-        socket.emit
-   
     });
     
     // Listen for message
-    socket.on('sendData', (msg) => {
+    socket.on('joinServer', (msg) => {
         console.log(msg);
         const island = getCurrentIsland(socket.id);
-        io.to(island.server).emit('message', formatMessage(island.island_name, msg)); //add extra data for island info
+        io.to(island.server).emit('sendMessage', formatInfoMessage(island.island_name, island.prices, island.dodo_code));
+        io.to(island.server).emit('roomUsers', {
+            room: island.server,
+            users: getServerUsers(island.server)
+        }); // send Island data
     });
 
      // When Client disconnects
      socket.on('disconnect', ()=> {
-        io.emit('message', formatMessage(botName,'An Island has left!')); // notify everyone w/ client
+        const island = userLeave(socket.id);
+
+        if (island) { // if island exist
+            io.to(island.server).emit('message', formatMessage(botName,`${island.island_name} has left!`)); // notify everyone w/ client
+            io.to(island.server).emit('roomUsers', {
+                room: island.server,
+                users: getServerUsers(island.server)
+            }); // Send Island Data 
+        }
     });
 });
 

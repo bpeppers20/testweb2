@@ -12,7 +12,7 @@
 </head>
 <body>
     <div style="background:transparent !important" class="jumbotron text-center">
-        <h2>Server1</h2> <!--!important means will be last to show up if not overwritten-->
+        <h2 id="server-name"></h2> <!--!important means will be last to show up if not overwritten-->
         <div class="brec"></div> <!--Border background rectangle for Header-->
         <a href="index.html" class="btn" style="background-color: #F2EF89; color: black;">Leave the Server!</a>
     </div>
@@ -26,7 +26,7 @@
     <script 
         src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" 
         integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" 
-        crossorigin="anonymous"> // Query String Parser
+        crossorigin="anonymous"> // Query StringroomUsers
     </script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/script.js"></script>
