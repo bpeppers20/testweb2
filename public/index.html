@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script defer src="js/validator.js"></script>
+    <link rel="stylesheet" href="css/homepage.css">
+    <title>ACNH: Turnip Prices Sharer </title>
+    <link rel="shortcut icon" href="https://lh3.googleusercontent.com/VbtbQEN6LYoyRf0aZT4Nk6ZBm-4prO3T7tWdlboyLerJX8z_TPs__jz1rR6P3541mPM" type="image/x-icon">
+</head>
+<body onload="regHandle()">
+    <p>
+        <div style="background:transparent !important" class="jumbotron text-center">
+            <h1>Turnip Prices Sharer</h1> <!--!important means will be last to show up if not overwritten-->
+            <div class="brec"></div> <!--Border background rectangle for Header-->
+        </div>
+        <!--Bootstrap Fluid Format-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <!--Webpage-->
+                    <div class="irec">
+                        <div class="info">
+                            <form id="infoForm" name="infoForm" action="server1.html" method="GET">
+                                <label for="server" style="white-space: nowrap">Chose your server</label>
+                                <br>
+                                <select name="server" id="server" class="ops">
+                                    <option value="Server 1">Server 1</option>
+                                    <option value="Server 2">Server 2</option>
+                                </select>
+                                <br>
+                                <label for="island_name">Island Name</label>
+                                <br>
+                                <input type="text" id="island_name" name="island_name" class="ops" maxlength="10">
+                                <br>
+                                <label for="prices"><img src="https://dodo.ac/np/images/0/0d/Bell_CF_Icon_L.png" alt="Bells" width="30px" height="30px"></label>
+                                <br>
+                                <input type="number" id="prices" name="prices" class="ops">
+                                <br>
+                                <label for="dodo_code">Dodo Code</label>
+                                <br>
+                                <input type="number" id="dodo_code" name="dodo_code" class="ops" maxlength="5">
+                                <br>
+                                <input type="submit" value="Join Server!" style="background-color: #F2EF89; color: black;"/>
+                            </form>
+                        </div> 
+                    </div> <!-- Border background rectangle for Header-->
+                    <!--Webpage-->
+                </div>
+            </div>
+        </div>
+        <!--Bootstrap Fluid Format-->
+    </p>
+</body>
+</html>

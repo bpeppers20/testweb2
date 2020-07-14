@@ -1,50 +1,52 @@
 //Modules
-const { request, response } = require("express"); // Gives Access to request and response handlers from experss module npm install express
+const formatMessage = require('./public/js/messages'); // User made module
+const {userJoin, getCurrentIsland} = require('./public/js/users'); // User Made module
 const express = require('express'); // allows me to use express module for post May combine later
-
-
 // Object Variables to use modules
 const app = express(); //Make a variable the uses express objects
-const server = require('http').Server(app);
+const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-// Set EJS View Engine
-app.set('views', './views'); // View Point into our folder views
-app.set('view engine', 'ejs');
+
 app.use(express.static('public')); // allows all files in public to be used
 app.use(express.urlencoded({extended: true}));
 
 // Variables
-// Islands
-const islands = { island: {}};
- // HTTP Through Express
+botName = 'Island Bot';
+
+// app.get/post changes the url reference to the file to whatever you named it 
+//Outside of index, the name must match without extention
  
- 
- app.get('/',(request, response) => { // Event Handler for request and response
-    response.render('index');
+
+
+io.on('connection', socket => {
+    console.log("Connected to Server Socket");
+    socket.on('joinServer', ({server, island_name, prices, dodo_code}) => {
+        const island = userJoin(socket.id, server, island_name, prices, dodo_code);
+        // Join Island
+        socket.join(island.server);
+        
+        socket.emit('message', formatMessage(botName, 'Welcome to the Server!')); // Only client
+        // Broadcast when a user connects
+        socket.broadcast.to(island.server).emit('message', formatMessage(botName,`${island.island_name} has been found!`)); // to notify all but client
+        socket.emit
+   
+    });
+    
+    // Listen for message
+    socket.on('sendData', (msg) => {
+        console.log(msg);
+        const island = getCurrentIsland(socket.id);
+        io.to(island.server).emit('message', formatMessage(island.island_name, msg)); //add extra data for island info
+    });
+
+     // When Client disconnects
+     socket.on('disconnect', ()=> {
+        io.emit('message', formatMessage(botName,'An Island has left!')); // notify everyone w/ client
+    });
 });
-// Handle GET Form operations I do not know why post does not work on my cpu
-//  'Location', callback
-var name =""
-app.post('/server1', (request, response) => { // Event Handler for request and response to server1.html
 
-    islands[request.body.island_name] = { islandName: {} }; 
-    response.render('server1', {data: request.body}); // render data from input form 
-    name = request.body.island_name;
-    // Send Message that new room was created
-    response.end();
-});
-
-
-io.on('connection', function(client) {
-    console.log('Connecting');
-    console.log(name +' Island has been found')
- })
-
- io.on('island found', data =>{
-    console.log('Boop Island has been found')
-})
 // Event Listener
-app.listen(process.env.PORT || 3000, () => console.log('App Avaiable on http://localhost:3000')); //While local, gives me the chance to see webpage on local host
+server.listen(process.env.PORT || 3000, () => console.log('App Avaiable on http://localhost:3000')); //While local, gives me the chance to see webpage on local host
 
 // app.listen(process.env.PORT || 3000); is all you need for the port to work
