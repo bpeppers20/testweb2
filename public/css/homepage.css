@@ -1,106 +1,157 @@
+/* Need Something for the text class and infoServer, infoServer1, infoServer2 */
 body {
-    background-color: #E2F3F1;
+  background-color: #E2F3F1;
 }
 
 /* May need to make a separated size for large desktops*/
-
 h1 {
-    position: absolute;
-    /* left: 700px; */
-    margin-left: 37%;
-    /*top: 5px; */
-    margin-top: -2%;
-    white-space: nowrap; /* Prevent text wrapping*/
-    /* Dynamic Font Size vw= viewport width */ 
+  color: white;
+  position: absolute;
+  /* left: 700px; */
+  margin-left: 37%;
+  /*top: 5px; */
+  margin-top: -2%;
+  white-space: nowrap;
+  /* Prevent text wrapping*/
+  /* Dynamic Font Size vw= viewport width */
+  text-shadow: 2px 2px 5px black;
+}
+
+.btn {
+  background-color: #F2EF89;
+  color: black;
 }
 
 h2 {
-    position: absolute;
-    margin-left: 45%;
-    margin-top: -1%;
+  position: absolute;
+  margin-left: 45%;
+  margin-top: -1%;
+  text-shadow: 2px 2px 5px black;
+  color: white;
 }
 
-.brec { 
-    height: 106px; /*106px*/
-    width: 627px; /*627px*/
-    position: absolute;
-    margin-left: 29%;
-    margin-top: -3%;
-    background-color: #50e682;
-    z-index: -1;
+.brec {
+  height: 106px;
+  /*106px*/
+  width: 627px;
+  /*627px*/
+  position: absolute;
+  margin-left: 29%;
+  margin-top: -3%;
+  background-color: #50e682;
+  z-index: -1;
 }
 
 .irec {
+  background-color: #50e682;
+  position: absolute;
+  height: 550px;
+  width: 627px;
+  z-index: 1;
+  margin-top: 0%;
+  left: 31%;
+}
+
+.info {
+  position: absolute;
+  margin-top: 0.5%;
+  margin-left: 20%;
+  z-index: 1;
+  font-size: x-large;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
+
+.text {
+  background-color: #50e682;
+  height: 150px;
+  width: 625px;
+  padding: 25px;
+  padding-left: 15%;
+  z-index: 1;
+  font-size: x-large;
+  margin-left: 30.5%;
+}
+
+.infoServer {
+  margin-top: -5%;
+}
+
+/* May need to make a CSS class for buttons and options */
+.ops {
+  background-color: #CDCDCD;
+}
+
+.btn {
+  margin-top: 4%;
+}
+
+@media only screen and (max-width: 600px) {
+  /* For mobile */
+  h1 {
+    position: absolute;
+    /* left: 700px; */
+    margin-left: 0%;
+    /*top: 5px; */
+    margin-top: 1%;
+    white-space: nowrap;
+    /* Prevent text wrapping*/
+    /* Dynamic Font Size vw= viewport width */
+  }
+  h2 {
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 3%;
+  }
+  .brec {
+    height: 106px;
+    /*106px*/
+    width: 460px;
+    /*627px*/
+    position: absolute;
+    margin-left: -10%;
+    margin-top: -3%;
+    background-color: #50e682;
+    z-index: -1;
+  }
+  .irec {
     background-color: #50e682;
     position: absolute;
-    height: 550px;
-    width: 627px;
+    height: 430px;
+    width: 500px;
     z-index: 1;
-    margin-top: 0%;
-    left: 31%;
-}
-.info {
+    margin-top: 10%;
+    left: -15%;
+  }
+  .info {
     position: absolute;
-    margin-top: 0.5%;
-    margin-left: 20%;
+    margin-top: 5%;
+    margin-left: 18%;
     z-index: 1;
     font-size: x-large;
+  }
+  .infoServer {
+    margin-top: 3%;
+  }
+  .text {
+    background-color: #50e682;
+    height: 150px;
+    width: 250px;
+    padding: 25px;
+    z-index: 1;
+    font-size: x-large;
+    margin-left: 15%;
+    margin-top: -15%;
+  }
+  .btn {
+    margin-left: -20%;
+    margin-top: 20%;
+    background-color: #F2EF89;
+    color: black;
+  }
+  /* May need to make a CSS class for buttons and options */
+  .ops {
+    background-color: #CDCDCD;
+  }
 }
-
- /* May need to make a CSS class for buttons and options */
- .ops {
-     background-color: #CDCDCD;
- }
-
- .btn {
-     margin-top: 4%;
- }
-
-@media only screen and (max-width: 600px){ /* For mobile */
-    h1 {
-        position: absolute;
-        /* left: 700px; */
-        margin-left: 0%;
-        /*top: 5px; */
-        margin-top: 1%;
-        white-space: nowrap; /* Prevent text wrapping*/
-        /* Dynamic Font Size vw= viewport width */ 
-    }
-    h2 {
-        position: absolute;
-        margin-left: 45%;
-        margin-top: -1%;
-    }
-    
-    .brec { 
-        height: 106px; /*106px*/
-        width: 460px; /*627px*/
-        position: absolute;
-        margin-left: -10%;
-        margin-top: -3%;
-        background-color: #50e682;
-        z-index: -1;
-    }
-    
-    .irec {
-        background-color: #50e682;
-        position: absolute;
-        height: 430px;
-        width: 500px;
-        z-index: 1;
-        margin-top: 10%;
-        left: -15%;
-    }
-    .info {
-        position: absolute;
-        margin-top: 5%;
-        margin-left: 18%;
-        z-index: 1;
-        font-size: x-large;
-    }
-
-     /* May need to make a CSS class for buttons and options */
-     .ops {
-        background-color: #CDCDCD;
-    }
-}
+/*# sourceMappingURL=homepage.css.map */

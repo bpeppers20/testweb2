@@ -6,8 +6,10 @@ const {server, island_name, prices, dodo_code} = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 }); // Use Query String Parsing to get data alone from url
 const serverName = document.getElementById('server-name');
+// Client Counter
+const client = 0;
 
-console.log(server, island_name, prices, dodo_code);
+// Socket Emiters and Handlers
 socket.emit('joinServer', {server, island_name, prices, dodo_code});
 
 // Get Room Data
@@ -15,42 +17,37 @@ socket.on('roomUsers', ({room, users}) => {
     outputServerName(room);
 });
 
-// Socket Handlers
 socket.on('message', (message) => {
-    console.log(`${message}`);
     outputMessage(message);
-
 });
 
 socket.on('sendMessage', msg => {
-    console.log(`${msg}`);
     outputIslandInfo(msg);
 });
 
 
 //Functions
-function outputMessage (msg) { // Output message to DOM
-    const div = document.createElement('div');
-    div.classList.add('message'); // Adds a class to a div or element from your html
-    // Add extra data for bells and dodocode
-    div.innerHTML = `<p class="meta">${msg.username} <span> ${msg.time}</span></p>
-    <p class="text"> 
-      ${msg.text}
-    </p>`;
-    document.querySelector('.info').appendChild(div); // Append div to chat-messags
-}
 
 function outputIslandInfo (msg) { // Output message to DOM
+    // assign row based on client counter
     const div = document.createElement('div');
-    div.classList.add('message'); // Adds a class to a div or element from your html
-    // Add extra data for bells and dodocode
-    div.innerHTML = `<p class="meta">${msg.islandName} <span> ${msg.time}</span></p>
+    div.innerHTML = `
     <p class="text"> 
-      Prices: ${msg.prices} Bells
+    ${msg.islandName} <br>
+    Prices: ${msg.prices} Bells
       <br>
       Dodo Code: ${msg.dodoCode}
     </p>`;
-    document.querySelector('.info').appendChild(div); // Append div to chat-messags
+    document.querySelector(`.infoServer`).appendChild(div); // Append div to chat-messags
+}
+
+
+function outputMessage (msg) { // Output message to DOM
+    const div = document.createElement('div');
+    div.innerHTML = `<p class="text">${msg.username} <span> ${msg.time}</span>
+      ${msg.text}
+    </p>`;
+    document.querySelector(`.infoServer`).appendChild(div); // Append div to chat-messags
 }
 
 // Add Room name to DOM

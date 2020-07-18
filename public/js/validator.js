@@ -6,17 +6,18 @@ function validator(event) //Called by regHandle
     const bells = document.getElementById('prices').value;
     const dodoCode = document.getElementById('dodo_code').value;
    
-    if (island == '')
+    if (island == '' || island.length > 10)
     {
         return false;
     }
-    if (bells == '')
+    if (bells == '' || bells.length > 3)
     {
         return false;
     }
     if (dodoCode != '')
     {
         // Check DodoCode for validation
+        if  (dodoCode.length != 5) return false;
     }
     return true;
 }
