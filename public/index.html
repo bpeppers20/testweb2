@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script defer src="js/validator.js"></script>
     <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>ACNH: Turnip Prices Sharer </title>
     <link rel="shortcut icon" href="https://lh3.googleusercontent.com/VbtbQEN6LYoyRf0aZT4Nk6ZBm-4prO3T7tWdlboyLerJX8z_TPs__jz1rR6P3541mPM" type="image/x-icon">
 </head>
-<body onload="regHandle()">
+<body id="body">
     <p>
         <div style="background:transparent !important" class="jumbotron text-center">
             <h1>Turnip Prices Sharer</h1> <!--!important means will be last to show up if not overwritten-->
@@ -24,7 +24,7 @@
                     <!--Webpage-->
                     <div class="irec">
                         <div class="info">
-                            <form id="infoForm" name="infoForm" action="server1.html" method="GET">
+                            <form id="infoForm" action="server1.html" method="GET">
                                 <label for="server" style="white-space: nowrap">Chose your server</label>
                                 <br>
                                 <select name="server" id="server" class="ops">
@@ -43,7 +43,7 @@
                                 <br>
                                 <input type="number" id="dodo_code" name="dodo_code" class="ops" maxlength="5">
                                 <br>
-                                <input type="submit" value="Join Server!" style="background-color: #F2EF89; color: black;"/>
+                                <input id="sub" type="submit" value="Join Server!" style="background-color: #F2EF89; color: black;"/>
                             </form>
                         </div> 
                     </div> <!-- Border background rectangle for Header-->
@@ -53,5 +53,7 @@
         </div>
         <!--Bootstrap Fluid Format-->
     </p>
+    <div id="planeAni"></div>
+    <script src="js/validator.js"></script>
 </body>
 </html>

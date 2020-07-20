@@ -84,7 +84,11 @@ h2 {
      margin-top: 4%;
  }
 
-@media only screen and (max-width: 600px){ /* For mobile */
+ .planeAnimation{
+     background-color: yellowgreen;
+ }
+
+@media only screen and (max-width: 576px){ /* For mobile */
     h1 {
         position: absolute;
         /* left: 700px; */

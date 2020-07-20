@@ -1,28 +1,36 @@
-function validator(event) //Called by regHandle
-{ 
+const form = document.getElementById('infoForm');
+const body = document.getElementById('body');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
     // Variables 
-    const server = document.getElementById('server').value;
+    var valid = true;
     const island = document.getElementById('island_name').value; 
     const bells = document.getElementById('prices').value;
     const dodoCode = document.getElementById('dodo_code').value;
-   
+
     if (island == '' || island.length > 10)
     {
-        return false;
+        valid = false;
+        e.preventDefault();
     }
     if (bells == '' || bells.length > 3)
     {
-        return false;
+        valid = false
+        e.preventDefault();
     }
     if (dodoCode != '')
     {
         // Check DodoCode for validation
-        if  (dodoCode.length != 5) return false;
+        if  (dodoCode.length != 5) {
+            valid = false;
+            e.preventDefault();
+        }
     }
-    return true;
-}
-
-function regHandle() // Loaded in the body so we can grab the form by id 
-{
-    document.getElementById("infoForm").onsubmit = validator; // Calls from the form the validation form via function ref GlobalEventHandlers
-}
+    // Run animation by adding animation class to form
+    if (valid) {
+        body.classList.add('planeAnimation');
+        setTimeout(()=> {
+            form.submit();
+        }, 3000);
+    }
+});

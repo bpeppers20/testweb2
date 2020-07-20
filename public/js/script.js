@@ -10,6 +10,10 @@ const serverName = document.getElementById('server-name');
 const client = 0;
 
 // Socket Emiters and Handlers
+
+
+
+
 socket.emit('joinServer', {server, island_name, prices, dodo_code});
 
 // Get Room Data

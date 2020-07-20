@@ -47,13 +47,16 @@ io.on('connection', socket => {
      // When Client disconnects
      socket.on('disconnect', ()=> {
         const island = userLeave(socket.id);
-
         if (island) { // if island exist
             io.to(island.server).emit('message', formatMessage(botName,`${island.island_name} has left!`)); // notify everyone w/ client
             io.to(island.server).emit('roomUsers', {
                 room: island.server,
                 users: getServerUsers(island.server)
             }); // Send Island Data 
+            //delete disconnected user data
+            serverHistory.forEach( i => {
+                serverHistory.splice(i.id, 1);
+            })
         }
     });
 });
