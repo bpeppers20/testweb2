@@ -1,5 +1,6 @@
 const form = document.getElementById('infoForm');
-const body = document.getElementById('body');
+const planeAni = document.getElementById('plane');
+body = document.getElementById('body');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     // Variables 
@@ -28,7 +29,13 @@ form.addEventListener('submit', (e) => {
     }
     // Run animation by adding animation class to form
     if (valid) {
-        body.classList.add('planeAnimation');
+        planeAni.style.display = 'block';
+        planeAni.className = 'ani'; // Trigger Plane moving animation
+        setTimeout(() => {
+            body.style.opacity = 0;
+            body.className = 'fadeEffect'; // Trigger Fade effect
+        }, 2000);
+        // Call Animation function within 3 seconds
         setTimeout(()=> {
             form.submit();
         }, 3000);

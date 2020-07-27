@@ -1,6 +1,16 @@
-/* Need Something for the text class and infoServer, infoServer1, infoServer2 */
+/* Need Variable for absolute position */
 body {
     background-color: #E2F3F1;
+}
+/* Fade Effect */
+.fadeEffect {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+@keyframes fade {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
 
 /* May need to make a separated size for large desktops*/
@@ -84,10 +94,25 @@ h2 {
      margin-top: 4%;
  }
 
- .planeAnimation{
-     background-color: yellowgreen;
+ #plane{
+    position: absolute;
+    display: none;
+    z-index: 1;
+    margin-top: 35%;
+    margin-left: 50%;
+    transform: rotate(-45deg);
+ }
+ .ani {
+     animation-name: animate;
+     animation-duration: 3s;
  }
 
+ @keyframes animate {
+     from{margin-top: 35%;}
+     to{margin-top: -15%; display: none;}
+ }
+
+ 
 @media only screen and (max-width: 576px){ /* For mobile */
     h1 {
         position: absolute;
